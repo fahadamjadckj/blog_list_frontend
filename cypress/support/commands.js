@@ -25,33 +25,33 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('login', () => {
-    cy.request('POST', 'http://localhost:3001/api/login', {
-        username: 'fahad',
-        password: 'fahad'
-    }).then(({ body }) => {
-        console.log(body)
-        localStorage.setItem('loggedUser', JSON.stringify(body))
-        cy.visit('http://localhost:3000')
-    })
+  cy.request('POST', 'http://localhost:3001/api/login', {
+    username: 'fahad',
+    password: 'fahad'
+  }).then(({ body }) => {
+    console.log(body)
+    localStorage.setItem('loggedUser', JSON.stringify(body))
+    cy.visit('http://localhost:3000')
+  })
 })
 
 Cypress.Commands.add('addUser', () => {
-    cy.request('POST','http://localhost:3001/api/users', {
-        name: 'fahad',
-        username: 'fahad',
-        password: 'fahad'
-    })
+  cy.request('POST','http://localhost:3001/api/users', {
+    name: 'fahad',
+    username: 'fahad',
+    password: 'fahad'
+  })
 })
 
 Cypress.Commands.add('addBlog', ({ title, author, url, likes }) => {
-    cy.request({
-        url: 'http://localhost:3001/api/blogs',
-        method: 'POST',
-        body: { title, author, url, likes },
-        headers: {
-            'Authorization': `bearer ${JSON.parse(localStorage.getItem('loggedUser')).token}`
-        }
-    })
+  cy.request({
+    url: 'http://localhost:3001/api/blogs',
+    method: 'POST',
+    body: { title, author, url, likes },
+    headers: {
+      'Authorization': `bearer ${JSON.parse(localStorage.getItem('loggedUser')).token}`
+    }
+  })
 
-    cy.visit('http://localhost:3000')
+  cy.visit('http://localhost:3000')
 })

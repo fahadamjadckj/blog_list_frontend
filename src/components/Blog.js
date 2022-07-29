@@ -2,7 +2,7 @@ import { useState } from 'react'
 import blogService from '../services/blogs'
 import Like from './Like'
 
-const Blog = ({ blogData }) => {
+const Blog = ({ blogData , setMessage }) => {
   const [showDetail, setShowDetail] = useState(false)
   const [blog, setBlog] = useState(blogData)
 
@@ -43,14 +43,13 @@ const Blog = ({ blogData }) => {
 
   const removeBlog = async () => {
     if(window.confirm('Delete post ?')) {
-      try {
-        blogService
-          .deleteBlog(blog)
-        setBlog({ ...blog, title: 'deleted' })
-      } catch (error) {
-        console.log(error)
-      }
-
+      blogService
+        .deleteBlog(blog)
+        .catch(error => {
+          console.log('nope', error.response.data.error)
+          setMessage(error.response.data.error)
+        })
+      setBlog({ ...blog, title: 'deleted' })
     }
   }
 

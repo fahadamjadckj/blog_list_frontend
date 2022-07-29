@@ -62,15 +62,21 @@ function App() {
 
 
   const createBlog = async (newBlog) => {
-    try {
-      const blog = await blogService.addBlog(newBlog)
-      setBlogs(blogs.concat(blog))
-    } catch (error) {
-      setMessage(error)
-      setInterval(() => {
+    let blog = ''
+    try{
+      blog = await blogService.addBlog(newBlog)
+    }
+    catch(err) {
+      setMessage(err.response.data.error)
+      setTimeout(() => {
         setMessage(null)
       }, 5000)
+      if(err.response.data.error === 'token expired') {
+        console.log('exec')
+        setUser(null)
+      }
     }
+    setBlogs(blogs.concat(blog))
 
   }
 
@@ -88,7 +94,7 @@ function App() {
           />
         </Togglable>
       }
-      { user && <Blogs blogs={blogs} setBlogs={setBlogs} />}
+      { user && <Blogs blogs={blogs} setMessage={setMessage} />}
       { user &&
         <Togglable label={'new blog'} ref={blogFormRef} >
           <AddBlogForm

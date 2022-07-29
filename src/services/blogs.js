@@ -40,6 +40,7 @@ const deleteBlog = async (blogData) => {
       Authorization: token
     }
   }
+
   await axios.delete(url, config)
   return true
 }

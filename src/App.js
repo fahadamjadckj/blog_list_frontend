@@ -88,7 +88,7 @@ function App() {
           />
         </Togglable>
       }
-      { user && <Blogs blogs={blogs}  />}
+      { user && <Blogs blogs={blogs} setBlogs={setBlogs} />}
       { user &&
         <Togglable label={'new blog'} ref={blogFormRef} >
           <AddBlogForm

@@ -7,7 +7,7 @@ const Logout = ({ setUser }) => {
 
   return (
 
-    <button onClick={logoutHandler}>Logout</button>
+    <button onClick={logoutHandler} className='logout'>Logout</button>
 
   )
 }

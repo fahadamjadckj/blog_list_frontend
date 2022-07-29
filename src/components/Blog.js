@@ -64,7 +64,7 @@ const Blog = ({ blogData }) => {
       <p className='likes'>likes { blog.likes } </p>
       <p>{blog.author}</p>
       <button style={likeStyle} onClick={addLike} >Like</button>
-      <button style={removeStyle} onClick={removeBlog} >remove</button>
+      <button style={removeStyle} onClick={removeBlog} className='remove' >remove</button>
     </div>
     : <div style={blogStyle} className='blog-less'>
       <p>

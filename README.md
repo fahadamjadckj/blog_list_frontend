@@ -2,7 +2,7 @@
 
 This is only the frontend portion of app for backend, [Blog List Backend](https://github.com/facebook/create-react-app).
 
-## Technologies Used
+## Scripts
 
 This project applies flux-architecture:
 
@@ -37,7 +37,7 @@ Your app is ready to be deployed!
 
 ## Collaborations and Usage
 
-For collaborations and usage please contact [Create React App documentation](mohammadfahadamajd@gmail.com).
+For collaborations and usage please contact [email](mohammadfahadamajd@gmail.com).
 
 
 

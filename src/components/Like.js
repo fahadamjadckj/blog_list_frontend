@@ -1,6 +1,15 @@
-const Like = ( { likeHandler, likeStyle } ) => {
+import { Button } from 'react-bootstrap'
+
+const Like = ({ likeHandler, likeStyle }) => {
   return (
-    <button style={likeStyle} onClick={likeHandler} className='addlike'>Like</button>
+    <Button
+      style={likeStyle}
+      onClick={likeHandler}
+      className="addlike"
+      variant="success"
+    >
+      Like
+    </Button>
   )
 }
 export default Like
